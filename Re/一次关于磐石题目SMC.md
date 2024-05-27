@@ -3,16 +3,19 @@
 今天天气怎么样
 
 这题目中给出的是一个32bit的程序。：
+
 ![image](https://github.com/OrangeStarOne/CTF/assets/113007326/c985076b-46dc-4640-8ce8-2bfce492a01f)
 
 
 看看这到题，前面式一个正常的判断的过程，首先是输入一个字符串str是一个30长度的。flag的长度就是30，对输入的长度进行了判断，之后是一个crazy()函数，可已跟进去：
+
 ![image](https://github.com/OrangeStarOne/CTF/assets/113007326/1b9f0958-a848-4cb3-b944-82397e7ccea5)
 
 
 这里就是在进行奇偶进行减法和异或的操作偶数减去索引，奇数异或索引。
 
 下面还有一个ohh函数：
+
 ![image](https://github.com/OrangeStarOne/CTF/assets/113007326/017e8002-b823-4d58-a95e-6698cbdfe5b5)
 
 
