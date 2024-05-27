@@ -3,15 +3,18 @@
 今天天气怎么样
 
 这题目中给出的是一个32bit的程序。：
-![image-20240526150148422](./pictures/image-20240526150148422.png)
+![image](https://github.com/OrangeStarOne/CTF/assets/113007326/c985076b-46dc-4640-8ce8-2bfce492a01f)
+
 
 看看这到题，前面式一个正常的判断的过程，首先是输入一个字符串str是一个30长度的。flag的长度就是30，对输入的长度进行了判断，之后是一个crazy()函数，可已跟进去：
-![image-20240526150620619](./pictures/image-20240526150620619.png)
+![image](https://github.com/OrangeStarOne/CTF/assets/113007326/1b9f0958-a848-4cb3-b944-82397e7ccea5)
+
 
 这里就是在进行奇偶进行减法和异或的操作偶数减去索引，奇数异或索引。
 
 下面还有一个ohh函数：
-![image-20240526150913150](./pictures/image-20240526150913150.png)
+![image](https://github.com/OrangeStarOne/CTF/assets/113007326/017e8002-b823-4d58-a95e-6698cbdfe5b5)
+
 
 这里就进行的了最后的判断这里与unk_4040C0进行对比：
 
@@ -56,7 +59,8 @@ print("Flag:", flag)
 
 其实下面才是真正的flag出现的地方
 
-![image-20240526151802293](./pictures/image-20240526151802293.png)
+![image](https://github.com/OrangeStarOne/CTF/assets/113007326/21bf04f8-f084-47b0-a023-3f3322b7a068)
+
 
 发现这里是smc操作其实就是代码加密混淆了：
 
@@ -72,27 +76,32 @@ for i in range(star,end+1):
 print("解密完成")
 ```
 
-![image-20240526153018882](./pictures/image-20240526153018882.png)
+![image](https://github.com/OrangeStarOne/CTF/assets/113007326/80c1984d-0f99-4018-9d3c-1300fdfc957c)
+
 
 这是开始第地方，查看它的起始地址：
 
-![image-20240526153127778](./pictures/image-20240526153127778.png)
+![image](https://github.com/OrangeStarOne/CTF/assets/113007326/bef16917-fef3-4a3a-a29f-575fe42bded4)
+
 
 上面是异或前的样子，下面是运行脚本后的样子：
 
-![image-20240526153946453](./pictures/image-20240526153946453.png)
+![image](https://github.com/OrangeStarOne/CTF/assets/113007326/ff7f9b04-a9fb-4ea1-9855-486970aaa1cb)
 
 使其变成C语言：按c键
 
-![image-20240526154053787](./pictures/image-20240526154053787.png)
+![image](https://github.com/OrangeStarOne/CTF/assets/113007326/edfae6f1-5e51-4965-8c29-8f810fc759f0)
+
 
 先是Force在是yes：
 
-![image-20240526154129185](./pictures/image-20240526154129185.png)
+![image](https://github.com/OrangeStarOne/CTF/assets/113007326/feff52ea-6396-4810-b636-9bf61c2a730b)
+
 
 之后是按下p键：
 
-![image-20240526154258251](./pictures/image-20240526154258251.png)
+![image](https://github.com/OrangeStarOne/CTF/assets/113007326/db22ac28-cc43-44d5-8098-e38b7bb7b258)
+
 
 这里就是异或后的函数，这时就可以F5了：
 
@@ -149,15 +158,18 @@ LABEL_11:
 
 在这个函数中可以看到：
 
-![image-20240526154637880](./pictures/image-20240526154637880.png)
+![image](https://github.com/OrangeStarOne/CTF/assets/113007326/311e19e5-80b8-40c5-a819-55687deebd92)
+
 
 有两个函数，一个是初始化，一个是真正的加密，跟进去：
 
-![image-20240526155807740](./pictures/image-20240526155807740.png)
+![image](https://github.com/OrangeStarOne/CTF/assets/113007326/4373d796-0683-4c93-bbc9-b1c89922d382)
+
 
 这里是想讲先是构造一个0，255的数组，后面就是进行值与值的交换。
 
-![image-20240526160118195](./pictures/image-20240526160118195.png)
+![image](https://github.com/OrangeStarOne/CTF/assets/113007326/62b2a5c0-f2dc-4ca6-9a69-2a58fd393b95)
+
 
 这里主要的就是进行了异或的操作，最终得脚本：
 
@@ -201,4 +213,3 @@ v3 = [0x4D, 0xD8, 0x76, 0x2D, 0x0C, 0x26, 0x0C, 0x53, 0xDA, 0xC0,
       0x98, 0x67, 0xF1, 0xAD, 0xA6, 0x0E, 0x7C, 0x66, 0x90, 0x7F
     ]
 ```
-
